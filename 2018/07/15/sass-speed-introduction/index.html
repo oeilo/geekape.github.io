@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="sass," />
 
 
 
@@ -81,16 +81,20 @@
 
 
 
-<meta name="description" content="一个总结分享HTML5/CSS3/JavaScript/VUE/NodeJs等技术个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="钟储兵博客">
-<meta property="og:url" content="https://geekape.github.io/index.html">
+<meta name="description" content="在之前我写过一篇CSS进阶：LESS快速入门的文章，这次这个sass和less一样是css预处理器，同样对对css的编写提高不少的效率，虽然sass和less用法都差不多，但在网上浏览博客时，总是发现sass比less讨论的人更多，用的人也更多，所以说有必要把sass的基本用法也学习一下。  一、安装sasssass是ruby语言写的，所以必须先安装ruby，然后再把sass装好。 如果你是使用w">
+<meta name="keywords" content="sass">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS预处理器：SASS快速入门">
+<meta property="og:url" content="https://geekape.github.io/2018/07/15/sass-speed-introduction/index.html">
 <meta property="og:site_name" content="钟储兵博客">
-<meta property="og:description" content="一个总结分享HTML5/CSS3/JavaScript/VUE/NodeJs等技术个人博客">
+<meta property="og:description" content="在之前我写过一篇CSS进阶：LESS快速入门的文章，这次这个sass和less一样是css预处理器，同样对对css的编写提高不少的效率，虽然sass和less用法都差不多，但在网上浏览博客时，总是发现sass比less讨论的人更多，用的人也更多，所以说有必要把sass的基本用法也学习一下。  一、安装sasssass是ruby语言写的，所以必须先安装ruby，然后再把sass装好。 如果你是使用w">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://zhongchubing.oss-cn-hangzhou.aliyuncs.com/2018/03/sass.jpg">
+<meta property="og:updated_time" content="2018-07-15T03:44:09.115Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="钟储兵博客">
-<meta name="twitter:description" content="一个总结分享HTML5/CSS3/JavaScript/VUE/NodeJs等技术个人博客">
+<meta name="twitter:title" content="CSS预处理器：SASS快速入门">
+<meta name="twitter:description" content="在之前我写过一篇CSS进阶：LESS快速入门的文章，这次这个sass和less一样是css预处理器，同样对对css的编写提高不少的效率，虽然sass和less用法都差不多，但在网上浏览博客时，总是发现sass比less讨论的人更多，用的人也更多，所以说有必要把sass的基本用法也学习一下。  一、安装sasssass是ruby语言写的，所以必须先安装ruby，然后再把sass装好。 如果你是使用w">
+<meta name="twitter:image" content="http://zhongchubing.oss-cn-hangzhou.aliyuncs.com/2018/03/sass.jpg">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://geekape.github.io/"/>
+  <link rel="canonical" href="https://geekape.github.io/2018/07/15/sass-speed-introduction/"/>
 
 
 
 
 
-  <title>钟储兵博客</title>
+  <title>CSS预处理器：SASS快速入门 | 钟储兵博客</title>
   
 
 
@@ -145,8 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -239,9 +242,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -271,9 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/15/sass-speed-introduction/" itemprop="url">CSS预处理器：SASS快速入门</a></h1>
+          <h1 class="post-title" itemprop="name headline">CSS预处理器：SASS快速入门</h1>
         
 
         <div class="post-meta">
@@ -345,9 +346,7 @@
       
 
       
-        
-          
-            <p>在之前我写过一篇<a href="http://www.zcbboke.com/1015.html" target="_blank" rel="noopener">CSS进阶：LESS快速入门</a>的文章，这次这个sass和less一样是css预处理器，同样对对css的编写提高不少的效率，虽然sass和less用法都差不多，但在网上浏览博客时，总是发现sass比less讨论的人更多，用的人也更多，所以说有必要把sass的基本用法也学习一下。</p>
+        <p>在之前我写过一篇<a href="http://www.zcbboke.com/1015.html" target="_blank" rel="noopener">CSS进阶：LESS快速入门</a>的文章，这次这个sass和less一样是css预处理器，同样对对css的编写提高不少的效率，虽然sass和less用法都差不多，但在网上浏览博客时，总是发现sass比less讨论的人更多，用的人也更多，所以说有必要把sass的基本用法也学习一下。</p>
 <p><img src="http://zhongchubing.oss-cn-hangzhou.aliyuncs.com/2018/03/sass.jpg" alt=""></p>
 <h2 id="一、安装sass"><a href="#一、安装sass" class="headerlink" title="一、安装sass"></a>一、安装sass</h2><p>sass是ruby语言写的，所以必须先<a href="http://www.ruby-lang.org/zh_cn/downloads/" target="_blank" rel="noopener">安装ruby</a>，然后再把sass装好。</p>
 <p>如果你是使用webpack或者其它打包工具，可直接在项目中写sass，比如<a href="http://www.zcbboke.com/1613.html" target="_blank" rel="noopener">vue-cli搭建的vue项目</a>，只需要安装sass的loader就可以直接使用了。</p>
@@ -387,8 +386,6 @@
 <h3 id="3-自定义函数"><a href="#3-自定义函数" class="headerlink" title="3.自定义函数"></a>3.自定义函数</h3><p>还支持自定义函数：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">　@<span class="keyword">function</span> double($n) &#123;</span><br><span class="line">　　　　@<span class="keyword">return</span> $n * <span class="number">2</span>;</span><br><span class="line">　　&#125;</span><br><span class="line">　　<span class="selector-id">#sidebar</span> &#123;</span><br><span class="line">　　　　<span class="attribute">width</span>: <span class="built_in">double</span>(5px);</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
 <p>less和sass有很多相似之处，个人认为sass更加强大点，并且有团队长期维护，更加可靠，不过还是要根据个人需求或者公司的需求来进行选择，工具是死的，人是活的。</p>
 
-          
-        
       
     </div>
     
@@ -403,262 +400,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://geekape.github.io/2018/07/15/test-hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekape">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="钟储兵博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/15/test-hexo/" itemprop="url">test hexo</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-15T10:32:49+08:00">
-                2018-07-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/sass/" rel="tag"># sass</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我来测试来hexo的上传文章功能，到底好不好用？</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://geekape.github.io/2018/07/15/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekape">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="钟储兵博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/15/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-15T10:10:44+08:00">
-                2018-07-15
-              </time>
+              <a href="/2018/07/15/test-hexo/" rel="next" title="test hexo">
+                <i class="fa fa-chevron-left"></i> test hexo
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -668,10 +439,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -679,6 +451,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -699,8 +475,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -767,6 +552,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、安装sass"><span class="nav-number">1.</span> <span class="nav-text">一、安装sass</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、sass编译"><span class="nav-number">2.</span> <span class="nav-text">二、sass编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、sass基本使用"><span class="nav-number">3.</span> <span class="nav-text">三、sass基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-变量"><span class="nav-number">3.1.</span> <span class="nav-text">1.变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-计算功能"><span class="nav-number">3.2.</span> <span class="nav-text">2.计算功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-嵌套"><span class="nav-number">3.3.</span> <span class="nav-text">3.嵌套</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-注释"><span class="nav-number">3.4.</span> <span class="nav-text">4.注释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、sass代码重用"><span class="nav-number">4.</span> <span class="nav-text">四、sass代码重用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-继承"><span class="nav-number">4.1.</span> <span class="nav-text">1.继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Mixin"><span class="nav-number">4.2.</span> <span class="nav-text">2.Mixin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-插入文件"><span class="nav-number">4.3.</span> <span class="nav-text">4.插入文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、sass高级用法"><span class="nav-number">5.</span> <span class="nav-text">四、sass高级用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-条件语句"><span class="nav-number">5.1.</span> <span class="nav-text">1.条件语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-循环语句"><span class="nav-number">5.2.</span> <span class="nav-text">2.循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-自定义函数"><span class="nav-number">5.3.</span> <span class="nav-text">3.自定义函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -908,6 +709,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
