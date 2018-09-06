@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CSS规范," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="钟储兵博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="前言：css一直被外行人看作是最简单的（不能算的上是编程语言）的语言，这点我非常的不认同，在css1.0之前我可能也会和你这样说，因为当时的css确实是非常的简单，但是现在都发布css3了，何况还有大量基于css的预处理器，比如sass可以你在css中使用for循环/变量这样的语法。css3也加入了动画的api，效果在某些情况下比js好的多，但是存在一定的限制，总之，各有各的好处。 我在是从最近的">
+<meta name="keywords" content="CSS规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模块化的CSS规范">
+<meta property="og:url" content="https://geekape.github.io/2018/09/06/模块化的CSS规范/index.html">
+<meta property="og:site_name" content="钟储兵博客">
+<meta property="og:description" content="前言：css一直被外行人看作是最简单的（不能算的上是编程语言）的语言，这点我非常的不认同，在css1.0之前我可能也会和你这样说，因为当时的css确实是非常的简单，但是现在都发布css3了，何况还有大量基于css的预处理器，比如sass可以你在css中使用for循环/变量这样的语法。css3也加入了动画的api，效果在某些情况下比js好的多，但是存在一定的限制，总之，各有各的好处。 我在是从最近的">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-06T11:26:20.572Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模块化的CSS规范">
+<meta name="twitter:description" content="前言：css一直被外行人看作是最简单的（不能算的上是编程语言）的语言，这点我非常的不认同，在css1.0之前我可能也会和你这样说，因为当时的css确实是非常的简单，但是现在都发布css3了，何况还有大量基于css的预处理器，比如sass可以你在css中使用for循环/变量这样的语法。css3也加入了动画的api，效果在某些情况下比js好的多，但是存在一定的限制，总之，各有各的好处。 我在是从最近的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://geekape.github.io/2018/09/06/模块化的CSS规范/"/>
+
+
+
+
+
+  <title>模块化的CSS规范 | 钟储兵博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">钟储兵博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">专注web前端技术的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://geekape.github.io/2018/09/06/模块化的CSS规范/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekape">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="钟储兵博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">模块化的CSS规范</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-06T19:17:56+08:00">
+                2018-09-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/09/06/模块化的CSS规范/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/09/06/模块化的CSS规范/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>前言：</strong>css一直被外行人看作是最简单的（不能算的上是编程语言）的语言，这点我非常的不认同，在css1.0之前我可能也会和你这样说，因为当时的css确实是非常的简单，但是现在都发布css3了，何况还有大量基于css的预处理器，比如sass可以你在css中使用for循环/变量这样的语法。css3也加入了动画的api，效果在某些情况下比js好的多，但是存在一定的限制，总之，各有各的好处。</p>
+<p>我在是从最近的项目开发中才真正的意识到css的重要性，不是你多快的使用css还原设计稿（细节把控不到位），而是后期对css的维护和让公司里的开发人员轻松的阅读和修改。这点至关重要，因为css比js容易的多，分分钟就可以写几十行的代码，我看了一下我上一个项目用的css(包括自动加前缀）的，一共有<code>3000多行</code>，写个上万行代码也是不用多久的，但是阅读起来并没有让我很轻松，尽管我使用了预处理器：sass。</p>
+<p>下面主要是参考<code>网易</code>的css规范，加以整理，将成为我之后写css的规范，我个人觉得非常不错，如果大家觉得不错也可以使用这css的规范。</p>
+<ol>
+<li>CSS分类方法</li>
+<li>CSS命名规则</li>
+<li>CSS代码格式</li>
+<li>CSS优化方案</li>
+</ol>
+<h2 id="CSS分类方法"><a href="#CSS分类方法" class="headerlink" title="CSS分类方法"></a>CSS分类方法</h2><h3 id="css文件分类"><a href="#css文件分类" class="headerlink" title="css文件分类"></a>css文件分类</h3><p>通常来说，一个小一点的项目一个css文件就足够了，但是对于一个中等项目来说，我们就要对css文件进行分类。</p>
+<p>我们可以按照css的用途把css文件分为”公共型样式“，“特殊型样式”和“皮肤型样式”，我在之前的项目中暂时没有使用到皮肤型样式，后期有需求可以会考虑修改。</p>
+<ol>
+<li>公共型样式：包括reset(重置）和统一的组件，元件，背景之类的样式。</li>
+<li>特殊型样式：当有个别页面，只需要对之前的组件，元件做细微改动时，我们就可以单独给这个页面设置样式，加以限制。</li>
+<li>皮肤型样式：主要是把css中所有颜色，背景之类的样式抽离出来，方便之后应对修改皮肤之类的需求。</li>
+</ol>
+<h3 id="css内部分类"><a href="#css内部分类" class="headerlink" title="css内部分类"></a>css内部分类</h3><ol>
+<li>重置(reset)和默认(base)：前者为了消除浏览器之间的差异，后者是为了减少后面重复的劳动。</li>
+<li>统一处理：在这个位置对一些通用性较高的布局/模块/元件作处理。</li>
+<li>布局(grid)：前缀<code>.g-</code>, 分割页面的各部分内容，如头部，主体，侧栏等。</li>
+<li>模块（module)：前缀<code>.m-</code>, 通常是一些重用性大的一个整体，如导航/登录/注册/评论等。</li>
+<li>元件(unit)：前缀<code>.u-</code>, 通常是一个不可再细分的个体，如按钮，图标，输入框等。</li>
+<li>功能(function)：前缀<code>.f-</code>, 通常是一些常用的样式，如padding/margin的设置，清除浮动之类的。</li>
+<li>皮肤(skin)：前缀<code>.s-</code>，设置单独的文字颜色，背景色（图）等。</li>
+<li>状态：前缀<code>.z-</code>，抽离hover，active等之后的状态。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/* 重置 */</span><br><span class="line">div,p,ul,ol,li&#123;margin: 0, padding: 0&#125;</span><br><span class="line"></span><br><span class="line">/* 默认 */</span><br><span class="line">strong,p &#123;font-size: 16px&#125;</span><br><span class="line"></span><br><span class="line">/* 统一设置背景 */</span><br><span class="line">m-logo a,.m-hav a &#123;background:(url:xxx.img) no-repeat&#125;</span><br><span class="line"></span><br><span class="line">/* 布局 */</span><br><span class="line">.g-flex&#123;display: flex&#125;</span><br><span class="line"></span><br><span class="line">/* 模块 */</span><br><span class="line">.m-goods &#123; padding: 20px; background: red&#125;</span><br><span class="line"></span><br><span class="line">/* 元件 */</span><br><span class="line">.u-btn &#123; text-align:center; color: green&#125;</span><br><span class="line"></span><br><span class="line">/* 功能 */</span><br><span class="line">.f-p-lg &#123;padding: 50px&#125;</span><br><span class="line">.f-mb-md &#123;margin-bootom: 20px&#125;</span><br><span class="line"></span><br><span class="line">/* 皮肤 */</span><br><span class="line">.s-paimray &#123;color: #000&#125;</span><br><span class="line">.s-error &#123;color: red&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CSS命名规则"><a href="#CSS命名规则" class="headerlink" title="CSS命名规则"></a>CSS命名规则</h2><p>不使用ID选择器，使用前缀为“-”的类选择器，单个字母+“-”为前缀，“-”也表示扩展分隔符，前面所说的布局（grid)(.g-);模块（module)（.m-); 元件（unit)(.u-);功能(function)（.f-）;皮肤（skin)（.s-）和状态（.z-）。</p>
+<p><strong>后代选择器</strong>命名不以单个字母加“-”为前缀，但是长度要大于2,如<code>.m-list item{}</code>，避免和出现混乱，一个语义化的标签也可以是后代选择器如:<code>.m-list li{}</code>，尽量避免单个字母类选择器出现，考虑他的命名是否已被使用，同时还可以在其它地方重用，后代选择器<strong>能短尽量短</strong>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/* 这里的item只在.goods-list中有效 */</span><br><span class="line">.m-goods &#123;width: 200px;background:#fff&#125;</span><br><span class="line">.m-goods item&#123;margin:1px&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="后代选择器类名简短但不失语议"><a href="#后代选择器类名简短但不失语议" class="headerlink" title="后代选择器类名简短但不失语议"></a>后代选择器类名简短但不失语议</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/* 不推荐 */</span><br><span class="line">.m-asd .green2 &#123;&#125;</span><br><span class="line">.g-left2 &#123;&#125;</span><br><span class="line"></span><br><span class="line">/* 推荐 */</span><br><span class="line">.m-list .warp&#123;&#125;</span><br><span class="line">.g-side2 &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>相同语义可以用字母或数字区分，如m-list/m-list2等，它们都是不同的列表模块。</p>
+<p><code>模块和元件扩展类</code>的命名应该以`方法+“-”+数字或字母，如.m-list-1,.m-list-2等。</p>
+<h2 id="CSS代码格式"><a href="#CSS代码格式" class="headerlink" title="CSS代码格式"></a>CSS代码格式</h2><p>选择器/属性和值都要是小写，必要的时候可以选择<strong>单行写一个选择器</strong>的方法，去除多余的空格，便于模块识别等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.m-goods li, .m-goods h2 &#123;font-size: 20px; color:#fff&#125;</span><br></pre></td></tr></table></figure>
+<p>省略值为0的单位，还是背景引入中的引号，颜色值使用#fff这样的缩写，不过最这节最重要的还是下面这点。</p>
+<h4 id="根据属性的重要性按顺序书写"><a href="#根据属性的重要性按顺序书写" class="headerlink" title="根据属性的重要性按顺序书写"></a>根据属性的重要性按顺序书写</h4><p>只要遵循竖向顺序即可，先写定位布局类属性，然后是自身属性，最后是文本及修饰类属性。</p>
+<blockquote>
+<p>显示属性：display, position, float, clear, top</p>
+</blockquote>
+<blockquote>
+<p>自身属性：width, height, margin, padding, border</p>
+</blockquote>
+<blockquote>
+<p>文本及修饰类属性： font, text-align, color, background </p>
+</blockquote>
+<h4 id="注释格式"><a href="#注释格式" class="headerlink" title="注释格式"></a>注释格式</h4><p>将注释全部写在对象的上一行，注释内容两端加空格，<code>块级注释</code>保持统一的缩进，原则上每个系列的样式都需要有一个注释，言简意赅的表明名称/用途/注意事项等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">* 块级注释</span><br><span class="line">* 块级注释</span><br><span class="line">* 块级注释</span><br><span class="line">* 块级注释</span><br><span class="line">* /</span><br><span class="line">.m-goods&#123;width: 1px&#125;</span><br><span class="line">/* 单行注释 */</span><br><span class="line">.m-goods item&#123;color: red&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="选择器顺序"><a href="#选择器顺序" class="headerlink" title="选择器顺序"></a>选择器顺序</h4><ul>
+<li>从大到小（以选择器的范围为准）</li>
+<li>从低到高（以等级上的高低为准）</li>
+<li>从先到后（以结构上的先后为准）</li>
+<li>从父到子（从结构上的嵌套为准）</li>
+</ul>
+<p>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/* 从大到小 */</span><br><span class="line">.m-goods .head&#123;width: 10px&#125;</span><br><span class="line">.m-goods .head img &#123;width:100%&#125;</span><br><span class="line"></span><br><span class="line">/* 从低到高 */</span><br><span class="line">.m-nav a&#123;color:#fff&#125;</span><br><span class="line">.m-nav a:hover&#123;color: red&#125;</span><br><span class="line"></span><br><span class="line">/* 从先到后 */</span><br><span class="line">.g-head&#123;height: 10px&#125;</span><br><span class="line">.g-body&#123;height: 20px&#125;</span><br><span class="line">.g-footer&#123;height: 30px&#125;</span><br><span class="line"></span><br><span class="line">/* 从父到子 */</span><br><span class="line">.m-list &#123;width: 1px&#125;</span><br><span class="line">.m-list item &#123;color: red&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="选择器等级"><a href="#选择器等级" class="headerlink" title="选择器等级"></a>选择器等级</h4><p>具体的请查看css教程里的文档，这里只做简单的说明：</p>
+<blockquote>
+<p>内联样式 &gt; ID &gt; class &gt; 标签</p>
+</blockquote>
+<p>下面的例子从上到下优先级由高到低：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">style=&quot;&quot;</span><br><span class="line"></span><br><span class="line">#wrap #content&#123;&#125;</span><br><span class="line"></span><br><span class="line">#content .p&#123;&#125;</span><br><span class="line"></span><br><span class="line">div#content&#123;&#125;</span><br><span class="line"></span><br><span class="line">#content h2&#123;&#125;</span><br><span class="line"></span><br><span class="line">#content&#123;&#125;</span><br><span class="line"></span><br><span class="line">p.content &#123;&#125;</span><br><span class="line"></span><br><span class="line">.content p&#123;&#125;</span><br><span class="line"></span><br><span class="line">.content &#123;&#125;</span><br><span class="line"></span><br><span class="line">div p &#123;&#125;</span><br><span class="line"></span><br><span class="line">p &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CSS优化方案"><a href="#CSS优化方案" class="headerlink" title="CSS优化方案"></a>CSS优化方案</h2><ol>
+<li>属性值尽量缩写，减少css文件大小，增加可读性和可维护性</li>
+<li>避免使用<code>*</code>这样耗性能的选择器，和<code>filter:alpha(opacity=10);}</code>这样的属性。</li>
+<li>选择器合并，把一些相同的属性进行合并</li>
+<li>背景图片合并，使用雪碧图，图片大小压缩。</li>
+<li>图片类文件按钮模块或元件合并，便于就进维护。</li>
+<li>能用css写的尽量不用js</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS规范/" rel="tag"># CSS规范</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/15/sass-speed-introduction/" rel="next" title="CSS预处理器：SASS快速入门">
+                <i class="fa fa-chevron-left"></i> CSS预处理器：SASS快速入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Geekape</p>
+              <p class="site-description motion-element" itemprop="description">一个总结分享HTML5/CSS3/JavaScript/VUE/NodeJs等技术个人博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS分类方法"><span class="nav-number">1.</span> <span class="nav-text">CSS分类方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#css文件分类"><span class="nav-number">1.1.</span> <span class="nav-text">css文件分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css内部分类"><span class="nav-number">1.2.</span> <span class="nav-text">css内部分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS命名规则"><span class="nav-number">2.</span> <span class="nav-text">CSS命名规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#后代选择器类名简短但不失语议"><span class="nav-number">2.0.1.</span> <span class="nav-text">后代选择器类名简短但不失语议</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS代码格式"><span class="nav-number">3.</span> <span class="nav-text">CSS代码格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#根据属性的重要性按顺序书写"><span class="nav-number">3.0.1.</span> <span class="nav-text">根据属性的重要性按顺序书写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释格式"><span class="nav-number">3.0.2.</span> <span class="nav-text">注释格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择器顺序"><span class="nav-number">3.0.3.</span> <span class="nav-text">选择器顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择器等级"><span class="nav-number">3.0.4.</span> <span class="nav-text">选择器等级</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS优化方案"><span class="nav-number">4.</span> <span class="nav-text">CSS优化方案</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekape</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div>
+  本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytldWogj';
+      var conf = '676b3c9a066b6d10a3f33b2641ee4a27';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
